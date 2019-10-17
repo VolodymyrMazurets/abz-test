@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <app-header />
+    <first-screen />
+    <acquainted-screen />
+    <relationships-screen />
+    <requirements-screen />
+    <users-screen />
+    <form-screen />
+    <app-footer />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from "./components/navigation/AppHeader";
+import FirstScreen from "./components/FirstScreen";
+import AcquaintedScreen from "./components/AcquaintedScreen";
+import RelationshipsScreen from './components/RelationshipsScreen';
+import RequirementsScreen from './components/RequirementsScreen';
+import UsersScreen from './components/UsersScreen';
+import FormScreen from './components/FormScreen';
+import AppFooter from "./components/navigation/AppFooter";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    AppHeader,
+    FirstScreen,
+    AcquaintedScreen,
+    RelationshipsScreen,
+    RequirementsScreen,
+    UsersScreen,
+    FormScreen,
+    AppFooter
   }
-}
+};
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

@@ -1,0 +1,53 @@
+@import "./_mixins";
+@import "./_vars";
+
+%title {
+  font-size: $heading-2;
+  text-align: center;
+}
+%grey-text {
+  color: $grey-text;
+  font-family: $sec-font;
+}
+%input {
+  width: 100%;
+  font-size: $base-size;
+  font-family: $sec-font;
+  padding: 0 18px;
+  min-height: 56px;
+  box-shadow: none;
+  border-radius: 4px;
+  background-color: $bg-color;
+  border: 1px solid #b7b7b7;
+  @include transition(border-color, border-width, color);
+  @include placeholder {
+    font-family: $sec-font;
+    color: $disabled-button-color;
+    font-size: $base-size;
+  }
+  &:focus {
+    border-width: 2px;
+    border-radius: 4px;
+    outline: none;
+  }
+  &.error {
+    border-width: 1px;
+    border-color: $error-color;
+    border-radius: 4px;
+    margin: 0;
+    &:focus {
+      border-width: 2px;
+    }
+  }
+}
+%select {
+  width: 100%;
+  font-size: $base-size;
+  font-family: $sec-font;
+  padding: 0 18px;
+  min-height: 56px;
+  box-shadow: none;
+  border-radius: 4px;
+  background-color: $bg-color;
+  border: 1px solid #b7b7b7;
+}

@@ -1,0 +1,53 @@
+// COLORS:
+$black: #000000;
+$primary-color: #ef6c00;
+$primary-hover: #fc831f;
+$secondary-color: #283593;
+$bg-color: #fff;
+$button-color: #fefefe;
+$disabled-button-bg: #d7d7d7;
+$disabled-button-color: #8d8c8c;
+$grey-text: #4c4b4b;
+$error-color: #f44336;
+
+
+// SIZE:
+
+@function px_to_rem($target, $context: $base-size) {
+  @if $target==0 {
+    @return 0;
+  }
+
+  @return $target / $context + 0rem;
+}
+
+$base-size: 16px;
+
+$heading-1-desc: px_to_rem(50px);
+$heading-1-tab: px_to_rem(42px);
+$heading-1-mob: px_to_rem(30px);
+$heading-2: px_to_rem(26px);
+$heading-3: px_to_rem(22px);
+$button-size: px_to_rem(20px);
+$medium-size: px_to_rem(18px);
+$small-size: px_to_rem(14px);
+$input-label: px_to_rem(12px);
+
+// FONTS:
+
+$main-font: 'Overpass', sans-serif;
+$sec-font: 'Source Sans Pro', sans-serif;
+// SCREENS
+
+$screen-iphone-6: 375px;
+$screen-iphone-plus: 414px;
+$screen-tablet-small: 480px;
+$screen-tablet: 768px;
+$screen-pc: 800px;
+$screen-tablet-large: 860px;
+$screen-netbook: 960px;
+$screen-desktop: 1024px;
+$screen-desktop-large: 1280px;
+$screen-hd: 1366px;
+$screen-fullhd: 1440px;
+$screen-retina: 1660px;

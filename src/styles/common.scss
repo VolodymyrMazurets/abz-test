@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  min-height: 100vh;
+}
+body {
+  background-color: $bg-color;
+  font-size: 100%;
+  font-family: $main-font;
+}
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+.abz-link {
+  @include text($heading-3, 700, $primary-color);
+  font-family: $sec-font;
+  @include transition(color);
+  &:hover {
+    color: $primary-hover;
+  }
+}
+.mb-30 {
+  margin-bottom: 30px;
+}
+.mb-35 {
+  margin-bottom: 35px;
+}
+ul {
+  list-style: none;
+}
