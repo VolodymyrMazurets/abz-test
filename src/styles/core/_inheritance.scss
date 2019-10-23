@@ -4,6 +4,9 @@
 %title {
   font-size: $heading-2;
   text-align: center;
+  @include media {
+    font-size: $heading-1-tab;
+  }
 }
 %grey-text {
   color: $grey-text;
@@ -50,4 +53,9 @@
   border-radius: 4px;
   background-color: $bg-color;
   border: 1px solid #b7b7b7;
+}
+%text-crop {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

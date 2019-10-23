@@ -32,8 +32,8 @@
         />
         <input
         :class="{'error' : error}"
-        v-model="onValue"
-        v-mask="'+38(###) ### ## ##'"
+        v-model.trim="onValue"
+        v-mask="'+380#########'"
         :type="type === 'tel'?'tel':type"
         @blur="$emit('blur')"
         @focus="$emit('focus')"

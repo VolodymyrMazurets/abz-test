@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 html,
 body {
@@ -16,6 +17,9 @@ a {
   display: inline-block;
   text-decoration: none;
 }
+ul {
+  list-style: none;
+}
 .abz-link {
   @include text($heading-3, 700, $primary-color);
   font-family: $sec-font;
@@ -27,9 +31,30 @@ a {
 .mb-30 {
   margin-bottom: 30px;
 }
+.mb-md-30 {
+  margin-bottom: 30px;
+  @include media {
+    margin-bottom: 0;
+  }
+}
+.mb-lg-30 {
+  margin-bottom: 30px;
+  @include media($screen-tablet-pro) {
+    margin-bottom: 0;
+  }
+}
 .mb-35 {
   margin-bottom: 35px;
 }
-ul {
-  list-style: none;
+.layer {
+  @include z-index(drawer);
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(black, .5);
 }

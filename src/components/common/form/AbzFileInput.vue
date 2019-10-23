@@ -1,6 +1,6 @@
 <template>
   <label class="abz-file">
-    <input type="file" @change="onFileChanged" />
+    <input type="file" accept="image/jpeg,image/jpg" @change="onFileChanged" />
     <span class="abz-file__name">{{ value ? value.name : 'Upload your photo'}}</span>
     <button @click="$emit('onUpload')">Upload!</button>
   </label>

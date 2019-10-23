@@ -1,10 +1,14 @@
 <template>
-  <button class="main-button" :disabled="disabled" :class="{secondary: isSecondary}">
+  <a
+    :href="anchor"
+    class="main-button"
+    :disabled="disabled"
+    :class="{secondary: isSecondary}">
     <slot />
     <slot>
       <span v-if="label">{{ label }}</span>
     </slot>
-  </button>
+  </a>
 </template>
 <script>
 export default {
@@ -21,6 +25,10 @@ export default {
     isSecondary: {
       type: Boolean,
       default: false
+    },
+    anchor: {
+      type: String,
+      default: "#"
     }
   }
 };
@@ -37,21 +45,27 @@ $styles: "main-button";
   border-radius: 4px;
   padding: 0 24px;
   line-height: 1;
-  @include transition(all);
-  position: relative;
   border: 2px solid transparent;
-  &:hover {
-    background-color: $primary-hover;
+  @include media {
+    cursor: pointer;
+    @include transition(all);
+    max-width: 290px;
+    &:hover {
+      background-color: $primary-hover;
+    }
   }
   &.secondary {
     border-color: $primary-color;
     background-color: transparent;
     color: $primary-color;
-    &:hover {
-    background-color: #fee6d2;
-  }
+    @include media {
+      &:hover {
+      background-color: #fee6d2;
+    }
+    }
   }
   &:disabled {
+    cursor: not-allowed;
     background-color: $disabled-button-bg;
     color: $disabled-button-color;
   }

@@ -52,5 +52,10 @@ export default {
 .rotate-leave-active {
   animation: rotateCaret 0.2s;
 }
-
+.slide-enter-active {
+  animation: slideInLeft 0.2s;
+}
+.slide-leave-active {
+  animation: slideOutLeft 0.2s;
+}
 </style>

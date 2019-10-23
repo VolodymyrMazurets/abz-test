@@ -86,7 +86,7 @@ $z-index: (immortal : 100,
   @return map-get($z-index, $key);
 }
 
-@mixin media($screen: $screen-pc) {
+@mixin media($screen: $screen-tablet) {
   @media screen and (min-width: $screen) {
     @content;
   }

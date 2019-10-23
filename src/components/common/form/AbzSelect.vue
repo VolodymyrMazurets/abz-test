@@ -40,7 +40,14 @@ export default {
       this.$emit("input", option);
     }
   },
-  props: ["options", "value"]
+  props: {
+    value: [Object, String, Number, Boolean],
+    options: Array,
+    name: {
+      type: String,
+      default: ''
+    } 
+  }
 };
 </script>
 <style lang="scss">
