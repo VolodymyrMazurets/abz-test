@@ -1,5 +1,7 @@
 const path = require('path');
 const ImageminPlugin = require('imagemin-webpack-plugin').default
+const ImageminMozjpeg = require('imagemin-mozjpeg')
+const ImageminPngquant = require('imagemin-pngquant')
 
 module.exports = {
   configureWebpack: {
