@@ -30,7 +30,7 @@ export default {
 <style lang="scss">
 $styles: "first-screen";
 .#{$styles} {
-  background: url("~@/assets/imgs/banner-bg/banner-bg-320x393.jpg") no-repeat
+  background: url("~@/assets/img/banner-bg-320x393.5c9c2de9.jpg") no-repeat
     center center;
   background-size: cover;
   text-align: center;
@@ -40,18 +40,18 @@ $styles: "first-screen";
   @include media {
     text-align: left;
     padding: 180px 0;
-    background: url("~@/assets/imgs/banner-bg/banner-bg-768x622.jpg") no-repeat
+    background: url("~@/assets/img/banner-bg-768x622.d8a2c6eb.jpg") no-repeat
       center center;
     background-size: cover;
   }
   @include media($screen-tablet-pro) {
     padding: 210px 0 160px;
-    background: url("~@/assets/imgs/banner-bg/banner-bg-1204x723.jpg") no-repeat
+    background: url("~@/assets/img/banner-bg-1204x723.68e8159a.jpg") no-repeat
       center center;
     background-size: cover;
   }
   @include media($screen-pc) {
-    background: url("~@/assets/imgs/banner-bg/banner-bg-2560x676.jpg") no-repeat
+    background: url("~@/assets/img/banner-bg-2560x676.2dde364e.jpg") no-repeat
       center center;
     background-size: cover;
     padding: 210px 0 130px;

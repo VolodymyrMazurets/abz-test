@@ -38,12 +38,12 @@ $styles: "requirements-screen";
 .#{$styles} {
   padding: 67px 0 64px;
   text-align: center;
-  background: url("~@/assets/imgs/third-block-bg/third-block-bg-320x1031.jpg")
+  background: url("~@/assets/img/third-block-bg-320x1031.a6374f84.jpg")
     no-repeat;
   background-size: cover;
   @include media {
     padding: 116px 0;
-    background: url("~@/assets/imgs/third-block-bg/third-block-bg-768x878.jpg")
+    background: url("~@/assets/img/third-block-bg-768x878.429b3875.jpg")
       no-repeat;
     background-size: cover;
   }
@@ -51,7 +51,7 @@ $styles: "requirements-screen";
     padding: 140px 0;
   }
   @include media($screen-pc) {
-    background: url("~@/assets/imgs/third-block-bg/third-block-bg-2560x692.jpg")
+    background: url("~@/assets/img/third-block-bg-2560x692.5d0dc799.jpg")
       no-repeat 50% 50%;
     background-size: cover;
     padding: 140px 0 90px;
