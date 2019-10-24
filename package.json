@@ -11,6 +11,8 @@
   "dependencies": {
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "lodash": "^4.17.15",
     "logger": "0.0.1",

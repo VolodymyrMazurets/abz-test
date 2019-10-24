@@ -6,13 +6,14 @@ module.exports = {
     devtool: 'source-map',
     plugins: [
       new ImageminPlugin({
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        pngquant: {
-          quality: '95-100'
-        },
-        jpegtran: {
-          quality: '95-100'
-        },
+        plugins: [
+          ImageminMozjpeg({
+            quality: 70
+          }),
+          ImageminPngquant({
+            quality: '80-90'
+          })
+        ]
       })
     ]
   },
