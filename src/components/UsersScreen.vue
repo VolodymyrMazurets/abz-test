@@ -9,22 +9,24 @@
           <h4 class="users-screen__subtitle">Attention! Sorting users 
 by registration date</h4>
         </div>
-        <abz-transition-group>
-          <div class="col-12 users-screen__card col-md-4" v-for="user in sortedUsers" :key="user.id">
-            <div class="users-screen__img-wrapper">
-              <img
-                :src="user.photo"
-                alt="user"
-                class="users-screen__img">
+        <div class="col-12">
+          <abz-transition-group>
+            <div class="col-12 users-screen__card col-md-4" v-for="user in sortedUsers" :key="user.id">
+              <div class="users-screen__img-wrapper">
+                <img
+                  :src="user.photo"
+                  alt="user"
+                  class="users-screen__img">
+              </div>
+              <div class="users-screen__wrapper">
+                <h4 class="users-screen__user-name">{{ user.name | trancate() }}</h4>
+                <p class="users-screen__value users-screen__value--all">{{ user.position }}</p>
+                <p class="users-screen__value">{{ user.email }}</p>
+                <p class="users-screen__value users-screen__value--all">{{ user.phone }}</p> 
+              </div> 
             </div>
-            <div class="users-screen__wrapper">
-              <h4 class="users-screen__user-name">{{ user.name | trancate() }}</h4>
-              <p class="users-screen__value users-screen__value--all">{{ user.position }}</p>
-              <p class="users-screen__value">{{ user.email }}</p>
-              <p class="users-screen__value users-screen__value--all">{{ user.phone }}</p> 
-            </div> 
-          </div>
-        </abz-transition-group>
+          </abz-transition-group>
+        </div>
         <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-md-4">
           <main-button
             label="Show more"
@@ -133,7 +135,6 @@ $styles: 'users-screen';
     font-size: $heading-3;
     text-align: center;
     max-width: 100%;
-    word-wrap: break-word;
     @include media($screen-tablet-pro) {
       text-align: left;
       margin-bottom: 16px;

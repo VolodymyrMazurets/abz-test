@@ -96,6 +96,7 @@ $styles: "abz-select";
   }
   &__value {
     color: #393939;
+    pointer-events: none;
     &.selected {
       color: $primary-color;
     }
