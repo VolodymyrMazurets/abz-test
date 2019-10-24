@@ -44,9 +44,7 @@
           />
         </div>
         <div class="col-12 mb-35 col-md-6">
-          <abz-select
-            :options="positions"
-            v-model="position_id" />
+          <abz-select :options="positions" v-model="position_id" />
         </div>
         <div class="col-12 mb-35 col-md-6">
           <div class="form-screen__file">
@@ -73,12 +71,19 @@
             of 70x70px
           </p>
         </div>
-        <div class="col-12 col-md-6 offset-md-3">
+        <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
           <main-button
+            submit
             class="form-screen__btn"
             label="Sign Up"
             :disabled="signupDisabled"
-            @click.native="signup" />
+            @click.native="signup"
+          />
+        </div>
+        <div class="col-12 d-flex justify-content-center mt-3" v-if="hasError">
+          <p class="form-screen__file-descr error">
+            Something wrong
+          </p>
         </div>
       </div>
     </div>
@@ -97,14 +102,20 @@ import {
   minLength
 } from "vuelidate/lib/validators";
 import { mapActions, mapState, mapMutations } from "vuex";
-import { POSITIONS_REQUEST, SIGNUP_REQUEST, SIGNUP_UPDATE_FORM, SIGNUP_UPDATE_VALUE, USERS_REQUEST} from "../constants";
+import {
+  POSITIONS_REQUEST,
+  SIGNUP_REQUEST,
+  SIGNUP_UPDATE_FORM,
+  SIGNUP_UPDATE_VALUE,
+  USERS_REQUEST
+} from "../constants";
 
 const fileSize = (value = {}) => {
   const { size = 0 } = value;
   return size < 5242880 && size > 5625;
 };
 
-const getSetForm = (key) => {
+const getSetForm = key => {
   return {
     get() {
       return this.formData[key];
@@ -112,8 +123,8 @@ const getSetForm = (key) => {
     set(value) {
       this[SIGNUP_UPDATE_FORM]({ key, value });
     }
-  }
-}
+  };
+};
 
 export default {
   name: "FormScreen",
@@ -126,7 +137,8 @@ export default {
   },
   data() {
     return {
-      showPopup: false
+      showPopup: false,
+      hasError: false
     };
   },
   computed: {
@@ -134,9 +146,11 @@ export default {
       let text = "";
       if (!this.$v.name.required) {
         text = "This field is required";
-      } if (!this.$v.name.minLength) {
+      }
+      if (!this.$v.name.minLength) {
         text = "Min length is 6 characters";
-      } if (!this.$v.name.maxLength) {
+      }
+      if (!this.$v.name.maxLength) {
         text = "Max length is 60 characters";
       }
       return text;
@@ -164,17 +178,14 @@ export default {
       positions: ({ positions }) => positions.positions,
       formData: ({ signup }) => signup.formData
     }),
-    position_id: getSetForm('position_id'),
-    name: getSetForm('name'),
-    email: getSetForm('email'),
-    phone: getSetForm('phone'),
-    photo: getSetForm('photo')
+    position_id: getSetForm("position_id"),
+    name: getSetForm("name"),
+    email: getSetForm("email"),
+    phone: getSetForm("phone"),
+    photo: getSetForm("photo")
   },
   methods: {
-    ...mapMutations('signup', [
-      SIGNUP_UPDATE_FORM,
-      SIGNUP_UPDATE_VALUE,
-    ]),
+    ...mapMutations("signup", [SIGNUP_UPDATE_FORM, SIGNUP_UPDATE_VALUE]),
     ...mapActions({
       [USERS_REQUEST]: `users/${USERS_REQUEST}`,
       [POSITIONS_REQUEST]: `positions/${POSITIONS_REQUEST}`,
@@ -185,24 +196,28 @@ export default {
     },
     async signup() {
       const formDataAll = new FormData();
-      formDataAll.append('photo', this.photo);
-      formDataAll.append('phone', this.phone);
-      formDataAll.append('email', this.email);
-      formDataAll.append('name', this.name);
-      formDataAll.append('position_id', this.position_id.id);
-      await this[SIGNUP_REQUEST](formDataAll);
-      this.showPopup = true;
-      this.photo = "";
-      this.phone = "";
-      this.email = "";
-      this.name = "";
-      this.position_id = {};
-      await this[USERS_REQUEST]();
-      this.$nextTick(() => { this.$v.$reset() });
+      formDataAll.append("photo", this.photo);
+      formDataAll.append("phone", this.phone);
+      formDataAll.append("email", this.email);
+      formDataAll.append("name", this.name);
+      formDataAll.append("position_id", this.position_id.id);
+      const ok = await this[SIGNUP_REQUEST](formDataAll);
+      if (ok) {
+        this.showPopup = true;
+        this.photo = "";
+        this.phone = "";
+        this.email = "";
+        this.name = "";
+        this.position_id = {};
+        await this[USERS_REQUEST]();
+        this.$nextTick(() => {
+          this.$v.$reset();
+        });
+      } else this.hasError = true;
     }
   },
   async created() {
-    await this[POSITIONS_REQUEST]();
+   await this[POSITIONS_REQUEST]();
   },
   validations: {
     name: {
@@ -281,12 +296,6 @@ $styles: "form-screen";
     @include media {
       width: 130px;
       @include text($button-size, 700, $primary-color);
-      // cursor: pointer;
-      // @include transition;
-      // &:hover {
-      //   color: $bg-color;
-      //   background-color: $primary-color;
-      // }
     }
   }
   &__file-icon {
@@ -308,6 +317,9 @@ $styles: "form-screen";
   &__btn {
     @include media {
       margin: auto;
+      & > * {
+        margin: auto;
+      }
     }
   }
 }

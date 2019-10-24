@@ -2,7 +2,7 @@
   <section class="relationships-screen" id="relationships">
     <div class="container">
       <div class="row">
-        <div class="col-12 mb-md-30 col-md-10 offset-md-1 mb-5 col-lg-8 offset-lg-2">
+        <div class="col-12 mb-md-30 col-md-10 offset-md-1 mb-5 col-lg-8 offset-lg-2 col-xl-6 offset-lg-3">
           <h2 class="relationships-screen__title">About my relationships with web-development</h2>
         </div>
         <div class="col-12 col-md-10 offset-md-1 col-lg-4 offset-lg-0 relationships-screen__card">
@@ -57,6 +57,9 @@ $styles: 'relationships-screen';
     padding: 130px 0;
   }
   @include media($screen-tablet-pro) {
+    padding: 100px 0 140px;
+  }
+  @include media($screen-pc) {
     padding: 100px 0 140px;
   }
   &__title {

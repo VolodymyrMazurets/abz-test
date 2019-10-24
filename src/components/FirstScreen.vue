@@ -2,7 +2,7 @@
   <div class="first-screen">
     <div class="container">
       <div class="row">
-        <div class="col-12 col-md-7">
+        <div class="col-12 col-md-7 col-xl-6">
           <h1 class="first-screen__title">
             Test assignment for Frontend Developer position
           </h1>
@@ -48,6 +48,13 @@ $styles: 'first-screen';
   }
   @include media($screen-tablet-pro) {
     padding: 210px 0 160px;
+    background: url('~@/assets/imgs/banner-bg/banner-bg-1204x723.jpg') no-repeat center center;
+    background-size: cover;
+  }
+  @include media($screen-pc) {
+    background: url('~@/assets/imgs/banner-bg/banner-bg-2560x676.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 210px 0 130px;
   }
   &__title {
     @include text($heading-1-mob);
@@ -87,6 +94,11 @@ $styles: 'first-screen';
         margin-bottom: 40px;
         & > span {
           display: block;
+        }
+      }
+      @include media($screen-pc) {
+        & > span {
+          display: initial;
         }
       }
     }

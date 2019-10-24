@@ -30,7 +30,7 @@ import AppFooter from "./components/navigation/AppFooter";
 import AbzTransition from './components/common/animation/AbzTransition';
 import MobileSideMenu from './components/navigation/MobileSideMenu';
 import { mapActions, mapState } from 'vuex';
-import { TOKEN_REQUEST } from './constants';
+import { TOKEN_REQUEST, USER_REQUEST } from './constants';
 
 export default {
   name: "app",
@@ -61,11 +61,13 @@ export default {
       this.showSideMenu = true
     },
     ...mapActions({
-      [TOKEN_REQUEST]: `signup/${TOKEN_REQUEST}`
+      [TOKEN_REQUEST]: `signup/${TOKEN_REQUEST}`,
+      [USER_REQUEST]: `users/${USER_REQUEST}`
     })
   },
   async created() {
     await this[TOKEN_REQUEST]();
+    await this[USER_REQUEST]();
   }
 };
 </script>

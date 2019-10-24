@@ -51,6 +51,14 @@ class HttpService {
       throw ('Users failed');
     }
   };
+  getUser = async (id) => {
+    try {
+      const { data } = await this._fetchData("get", `${this._apiBase}/users/${id}`);
+      return data;
+    } catch(e) {
+      throw ('Users failed');
+    }
+  };
   getToken = async () => {
     try {
       const { data } = await this._fetchData("get", `${this._apiBase}/token/`);

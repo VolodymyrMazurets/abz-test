@@ -9,20 +9,22 @@
           <h4 class="users-screen__subtitle">Attention! Sorting users 
 by registration date</h4>
         </div>
-        <div class="col-12 users-screen__card col-md-4" v-for="user in sortedUsers" :key="user.id">
-          <div class="users-screen__img-wrapper">
-            <img
-              :src="user.photo"
-              alt="user"
-              class="users-screen__img">
+        <abz-transition-group>
+          <div class="col-12 users-screen__card col-md-4" v-for="user in sortedUsers" :key="user.id">
+            <div class="users-screen__img-wrapper">
+              <img
+                :src="user.photo"
+                alt="user"
+                class="users-screen__img">
+            </div>
+            <div class="users-screen__wrapper">
+              <h4 class="users-screen__user-name">{{ user.name | trancate() }}</h4>
+              <p class="users-screen__value users-screen__value--all">{{ user.position }}</p>
+              <p class="users-screen__value">{{ user.email }}</p>
+              <p class="users-screen__value users-screen__value--all">{{ user.phone }}</p> 
+            </div> 
           </div>
-          <div class="users-screen__wrapper">
-            <h4 class="users-screen__user-name">{{ user.name | trancate() }}</h4>
-            <p class="users-screen__value users-screen__value--all">{{ user.position }}</p>
-            <p class="users-screen__value">{{ user.email }}</p>
-            <p class="users-screen__value users-screen__value--all">{{ user.phone }}</p> 
-          </div> 
-        </div>
+        </abz-transition-group>
         <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-md-4">
           <main-button
             label="Show more"
@@ -37,34 +39,31 @@ by registration date</h4>
 </template>
 <script>
 import MainButton from './common/buttons/MainButton';
-import { mapActions, mapState } from "vuex";
-import { USERS_REQUEST } from '../constants'
+import AbzTransitionGroup from './common/animation/AbzTransitionGroup';
+import { mapActions, mapState, mapGetters } from "vuex";
+import { USERS_REQUEST, RISE_COUNT } from '../constants';
 
 export default {
   name: 'UsersScreen',
   components: {
-    MainButton
-  },
-  data() {
-    return {
-      count: 6
-    }
+    MainButton,
+    AbzTransitionGroup
   },
   computed: {
     ...mapState({
       users: ({ users }) => users.users,
-      total_users: ({ users }) => users.total_users
+      total_users: ({ users }) => users.total_users,
+      count: ({users}) => users.count
     }),
-    sortedUsers() {
-      return this.users.slice(0, this.count);
-    }
+    ...mapGetters('users', ['sortedUsers'])
   },
   methods: {
     ...mapActions({
-      [USERS_REQUEST]: `users/${USERS_REQUEST}`
+      [USERS_REQUEST]: `users/${USERS_REQUEST}`,
+      [RISE_COUNT]: `users/${RISE_COUNT}`
     }),
     raiseCount() {
-      this.count += 6;
+      this[RISE_COUNT]();
     }
   },
  async created() {
@@ -133,7 +132,7 @@ $styles: 'users-screen';
   &__user-name {
     font-size: $heading-3;
     text-align: center;
-    max-width: 90%;
+    max-width: 100%;
     word-wrap: break-word;
     @include media($screen-tablet-pro) {
       text-align: left;
@@ -147,7 +146,7 @@ $styles: 'users-screen';
     line-height: 1.2;
     text-align: center;
     @extend %text-crop;
-    max-width: 90%;
+    max-width: 100%;
     &:last-child {
       margin-bottom: 0;
     }
@@ -155,6 +154,11 @@ $styles: 'users-screen';
       white-space: initial;
       overflow: initial;
       text-overflow: initial;
+    }
+  }
+  &__btn {
+    & > * {
+      margin: auto;
     }
   }
 }

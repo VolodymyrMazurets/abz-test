@@ -34,19 +34,27 @@ export default {
 };
 </script>
 <style lang="scss">
-$styles: 'requirements-screen';
+$styles: "requirements-screen";
 .#{$styles} {
   padding: 67px 0 64px;
   text-align: center;
-  background: url('~@/assets/imgs/third-block-bg/third-block-bg-320x1031.jpg') no-repeat;
+  background: url("~@/assets/imgs/third-block-bg/third-block-bg-320x1031.jpg")
+    no-repeat;
   background-size: cover;
   @include media {
     padding: 116px 0;
-    background: url('~@/assets/imgs/third-block-bg/third-block-bg-768x878.jpg') no-repeat;
+    background: url("~@/assets/imgs/third-block-bg/third-block-bg-768x878.jpg")
+      no-repeat;
     background-size: cover;
   }
   @include media($screen-tablet-pro) {
     padding: 140px 0;
+  }
+  @include media($screen-pc) {
+    background: url("~@/assets/imgs/third-block-bg/third-block-bg-2560x692.jpg")
+      no-repeat 50% 50%;
+    background-size: cover;
+    padding: 140px 0 90px;
   }
   &__title {
     @extend %title;
@@ -62,6 +70,11 @@ $styles: 'requirements-screen';
     @include media($screen-tablet-pro) {
       display: block;
       width: 100%;
+    }
+    @include media($screen-pc) {
+      display: block;
+      width: 80%;
+      margin: auto;
     }
   }
   &__img-tablet {

@@ -3,10 +3,10 @@
     <div class="mobile-side-menu">
       <header class="mobile-side-menu__header">
         <div class="mobile-side-menu__img-wrapper">
-          <img src="@/assets/imgs/user-adolph-2x.png" alt="user" class="mobile-side-menu__img" />
+          <img :src="user.photo" alt="user" class="mobile-side-menu__img" />
         </div>
-        <h4 class="mobile-side-menu__user-name">Superstar</h4>
-        <p class="mobile-side-menu__email">Superstar@gmail.com</p>
+        <h4 class="mobile-side-menu__user-name">{{ user.name }}</h4>
+        <p class="mobile-side-menu__email">{{ user.email }}</p>
       </header>
       <ul class="mobile-side-menu__list">
         <li class="mobile-side-menu__item">
@@ -32,8 +32,15 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex';
+
 export default {
-  name: "MobileSideMenu"
+  name: "MobileSideMenu",
+  computed: {
+    ...mapState({
+      user: ({ users }) => users.user
+    })
+  }
 };
 </script>
 <style lang="scss">

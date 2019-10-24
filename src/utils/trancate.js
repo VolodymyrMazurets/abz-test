@@ -4,6 +4,6 @@ export default (content, num = 3) => {
   if (text.length > num) {
     return `${result}...`;
   } else if (text.length === 1) {
-    return result.length > 30 ? `${result.slice(0, 30)}...` : result;
+    return result.length > 40 ? `${result.slice(0, 40)}...` : result;
   } else return result;
 };

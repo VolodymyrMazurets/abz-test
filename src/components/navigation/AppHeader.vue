@@ -29,11 +29,11 @@
             </a>
             <div class="app-header__user">
               <div class="app-header__user-wrapper">
-                <h4 class="app-header__user-name">Superstar</h4>
-                <p class="app-header__email">Superstar@gmail.com</p>
+                <h4 class="app-header__user-name">{{user.name}}</h4>
+                <p class="app-header__email">{{user.email}}</p>
               </div>
               <div class="app-header__img-wrapper">
-                <img src="@/assets/imgs/user-adolph-2x.png" alt="user" class="app-header__img" />
+                <img :src="user.photo" alt="user" class="app-header__img" />
               </div>
             </div>
             <a href="#" class="app-header__logout">
@@ -48,12 +48,18 @@
 <script>
 import IconMenu from "../icons/IconMenu";
 import IconLogout from "../icons/IconLogout";
+import { mapState } from 'vuex'
 
 export default {
   name: "AppHeader",
   components: {
     IconMenu,
     IconLogout
+  },
+  computed: {
+    ...mapState({
+      user: ({ users }) => users.user
+    })
   }
 };
 </script>

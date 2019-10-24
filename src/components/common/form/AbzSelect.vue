@@ -2,7 +2,7 @@
   <div class="abz-select" @click="showOptions = !showOptions">
     <div class="abz-select__select">
       <span class="abz-select__name">
-        {{value ? value.name : 'Select your position'}}
+        {{value.name ? value.name : 'Select your position'}}
       </span>
       <span class="abz-select__arrow" :class='{rotate: showOptions}'></span>
     </div>

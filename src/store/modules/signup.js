@@ -60,11 +60,10 @@ const actions = {
     commit(SIGNUP_REQUEST);
     try {
       await http.signup(payload);
-      commit(SIGNUP_SUCCESS);
+      return 1
     } catch(e) {
-      commit(SIGNUP_FAILURE);
+      return 0
     }
-    return;
   },
 }
 

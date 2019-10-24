@@ -1,14 +1,28 @@
 <template>
-  <a
-    :href="anchor"
-    class="main-button"
-    :disabled="disabled"
-    :class="{secondary: isSecondary}">
-    <slot />
-    <slot>
-      <span v-if="label">{{ label }}</span>
-    </slot>
-  </a>
+  <div>
+    <button
+      v-if="submit"
+      type="submit"
+      class="main-button"
+      :disabled="disabled"
+      :class="{secondary: isSecondary}">
+      <slot />
+      <slot>
+        <span v-if="label">{{ label }}</span>
+      </slot>
+    </button>
+    <a
+      v-else
+      :href="anchor"
+      class="main-button"
+      :disabled="disabled"
+      :class="{secondary: isSecondary}">
+      <slot />
+      <slot>
+        <span v-if="label">{{ label }}</span>
+      </slot>
+    </a>
+  </div>
 </template>
 <script>
 export default {
@@ -29,6 +43,10 @@ export default {
     anchor: {
       type: String,
       default: "#"
+    },
+    submit: {
+      type: Boolean,
+      default: false
     }
   }
 };
