@@ -14,7 +14,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "logger": "0.0.1",
     "logplease": "^1.2.15",
     "v-mask": "^2.0.2",
